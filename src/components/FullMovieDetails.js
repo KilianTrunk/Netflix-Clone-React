@@ -1,4 +1,6 @@
 import React from "react";
+import SaveFullMovieID from "../datafun/SaveFullMovieID";
+import RemoveMovieID from "../datafun/RemoveMovieID";
 
 export default class Slider extends React.Component {
   state = {
@@ -6,8 +8,6 @@ export default class Slider extends React.Component {
     movieOverview: null,
     movieReleaseDate: null,
     movieLanguage: null,
-    movieTagline: null,
-    movieHomepage: null,
   }; 
 
   async componentDidMount() {
@@ -39,23 +39,39 @@ export default class Slider extends React.Component {
       var movieOverview = data.overview;
       var movieReleaseDate = data.release_date;
       var movieLanguage = data.original_language;
-      var movieTagline = data.tagline;
-      var movieHomepage = data.homepage;
 
-    this.setState({ movieTitle: movieTitle, movieReleaseDate: movieReleaseDate, movieLanguage: movieLanguage, movieOverview: movieOverview, movieTagline: movieTagline, movieHomepage: movieHomepage });
+    this.setState({ movieTitle: movieTitle, movieReleaseDate: movieReleaseDate, movieLanguage: movieLanguage, movieOverview: movieOverview});
+
+    document.getElementById("myListButton2").style.display = "none";
     
   }
 
   render() {
     return (
+      <>
       <div className="movieDetailsTextStyle" >
           <p>Movie Title: <br /> {this.state.movieTitle}</p>
           <p>Movie Overview:  <br /> {this.state.movieOverview}</p>
           <p>Movie Release Date: <br /> {this.state.movieReleaseDate}</p>
           <p>Movie Language: <br /> {this.state.movieLanguage}</p>
-          <p>Movie Tagline: <br /> {this.state.movieTagline}</p>
-          <p>Movie Homepage: <br /> {this.state.movieHomepage}</p>
       </div>
+      <button
+      id="myListButton"
+      onClick={SaveFullMovieID}
+      type="button"
+      className="button button-list"
+    >
+      + My List
+    </button>
+    <button
+      id="myListButton2"
+      onClick={RemoveMovieID}
+      type="button"
+      className="button button-list"
+    > 
+    - Remove from my list
+    </button>
+    </>
     );
   }
 }

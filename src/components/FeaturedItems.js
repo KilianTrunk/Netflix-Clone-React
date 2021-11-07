@@ -14,14 +14,10 @@ const FeaturedItems = () => (
     </div>
     <div className="main-featured-movie-text-div">
       <p className="main-featured-movie-text" id="originalTitle">
-        STRANGER THINGS
       </p>
     </div>
     <div className="side-featured-movie-text-div">
       <p className="side-featured-movie-text" id="overviewText">
-        When a young boy vanishes, a small town uncovers a mystery involving
-        secret experiments, terrifying supernatural forces and a strange little
-        girl.
       </p>
     </div>
     <div className="buttons">
