@@ -1,10 +1,11 @@
 import "./App.css";
 import * as React from "react";
+import FullMovieDetails from "./components/FullMovieDetails";
 
 function FullMovieDetailsPage() {
   return (
     <>
-    <h1>Lolek</h1>
+    <FullMovieDetails/>
     </>
   );
 }

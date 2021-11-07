@@ -53,7 +53,8 @@ export default class Slider extends React.Component {
     const data = json.results.slice(1).map(result => {
       return {
         image: "https://image.tmdb.org/t/p/original" + result.backdrop_path,
-        caption: result.title
+        caption: result.title,
+        href: "/fullmovie?movieid=" + result.id
       }
     })
     data.length = 9;

@@ -14,22 +14,22 @@ const Navbar = () => (
     </div>
     <div className="menus">
       <div className="flex-container centerclass">
-        <a href="index.html" className="navbar-item">
+        <a href="/" className="navbar-item">
           TV Shows
         </a>
       </div>
       <div className="flex-container centerclass">
-        <a href="index.html" className="navbar-item">
+        <a href="/" className="navbar-item">
           Movies
         </a>
       </div>
       <div className="flex-container centerclass">
-        <a href="index.html" className="navbar-item">
+        <a href="/" className="navbar-item">
           Recently Added
         </a>
       </div>
       <div className="flex-container centerclass">
-        <a href="mylist.html" className="navbar-item">
+        <a href="/mylist" className="navbar-item">
           My List
         </a>
       </div>

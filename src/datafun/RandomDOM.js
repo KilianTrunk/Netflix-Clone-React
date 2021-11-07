@@ -17,6 +17,9 @@ export default class RandomDOM extends React.Component {
   
     const overview = document.querySelector('#overviewText');
     overview.innerHTML = json.results[0].overview;
+
+    var movieID = json.results[0].id;
+    document.getElementById("fullMovieButton").href = "/fullmovie?movieid=" + movieID + "";;
   }
 
   render() {
