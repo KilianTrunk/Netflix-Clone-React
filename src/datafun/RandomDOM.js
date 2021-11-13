@@ -11,7 +11,6 @@ export default class RandomDOM extends React.Component {
     const json = await response.json();
     this.setState({ featuredMovieID: json.results[0].id});
     document.getElementById("root").style.backgroundImage = "url('https://image.tmdb.org/t/p/original/" + json.results[0].backdrop_path + "')";
-    document.getElementById("myListButton2").style.display = "none";
     const title = document.querySelector('#originalTitle');
     title.innerHTML = json.results[0].original_title;
   
