@@ -59,8 +59,5 @@ export default async function SaveFullMovieID() {
     localStorage.setItem('movieIDs', movieID);
   
     // ********************************************* KODA ZA SHRANJEVANJE - END ***********************************************
-
-    document.getElementById("myListButton").style.display = "none";
-    document.getElementById("myListButton2").style.display = "inline-block";
   }
   

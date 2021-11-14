@@ -6,8 +6,8 @@ export default class FeaturedItems extends React.Component {
   constructor() {
     super();
     this.state = {
-      styleSave: "inline-block",
-      styleRemove: "none",
+      showSaveButton: true,
+      showRemoveButton: false
     };
 
     this.handleSave = this.handleSave.bind(this);
@@ -18,7 +18,7 @@ export default class FeaturedItems extends React.Component {
   }
 
   handleSave(event) {
-    this.setState({ styleSave: "none", styleRemove: "inline-block" });
+    this.setState({ showSaveButton: false, showRemoveButton: true });
   }
 
   callSaveFunctions(){
@@ -27,7 +27,7 @@ export default class FeaturedItems extends React.Component {
   }
 
   handleRemove(event) {
-    this.setState({ styleSave: "inline-block", styleRemove: "none" });
+    this.setState({ showSaveButton: true, showRemoveButton: false });
   }
 
   callRemoveFunctions(){
@@ -62,24 +62,24 @@ export default class FeaturedItems extends React.Component {
                 I> Play
               </button>
             </a>
+            {this.state.showSaveButton && (
             <button
-              id="myListButton"
               onClick={this.callSaveFunctions}
               type="button"
               className="button button-list"
-              style={{ display: this.state.styleSave }}
             >
               + My List
             </button>
-            <button
-              id="myListButton2"
-              onClick={this.callRemoveFunctions}
-              type="button"
-              className="button button-list"
-              style={{ display: this.state.styleRemove }}
-            >
-              - Remove from my list
-            </button>
+            )}
+            {this.state.showRemoveButton && (
+              <button
+                onClick={this.callRemoveFunctions}
+                type="button"
+                className="button button-list"
+              >
+                - Remove from my list
+              </button>
+            )}
           </div>
         </div>
       </>
