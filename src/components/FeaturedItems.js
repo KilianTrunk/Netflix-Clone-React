@@ -1,13 +1,16 @@
 import * as React from "react";
-import SaveMovieID from "../datafun/SaveMovieID";
-import RemoveMovieID from "../datafun/RemoveMovieID";
+import SaveMovieDetails from "../datafun/SaveMovieDetails";
+import RemoveMovieDetails from "../datafun/RemoveMovieDetails";
 
 export default class FeaturedItems extends React.Component {
   constructor() {
     super();
     this.state = {
       showSaveButton: true,
-      showRemoveButton: false
+      showRemoveButton: false,
+      overview: null,
+      title: null,
+      href: null
     };
 
     this.handleSave = this.handleSave.bind(this);
@@ -23,7 +26,7 @@ export default class FeaturedItems extends React.Component {
 
   callSaveFunctions(){
     this.handleSave();
-    SaveMovieID();
+    SaveMovieDetails();
   }
 
   handleRemove(event) {
@@ -32,7 +35,17 @@ export default class FeaturedItems extends React.Component {
 
   callRemoveFunctions(){
     this.handleRemove();
-    RemoveMovieID();
+    RemoveMovieDetails();
+  }
+
+  async componentDidMount() {
+    const url = "https://api.themoviedb.org/3/trending/movie/day?api_key=b0d1306fad90411efb79cc7bced5c6f2";
+    const response = await fetch(url);
+    const json = await response.json();
+
+    document.getElementById("root").style.backgroundImage = "url('https://image.tmdb.org/t/p/original/" + json.results[0].backdrop_path + "')";
+
+    this.setState({ overview: json.results[0].overview, title: json.results[0].title, href: "/fullmovie?movieid=" + json.results[0].id});
   }
 
   render() {
@@ -47,13 +60,13 @@ export default class FeaturedItems extends React.Component {
             />
           </div>
           <div className="main-featured-movie-text-div">
-            <p className="main-featured-movie-text" id="originalTitle"></p>
+            <p className="main-featured-movie-text" id="originalTitle">{this.state.title}</p>
           </div>
           <div className="side-featured-movie-text-div">
-            <p className="side-featured-movie-text" id="overviewText"></p>
+            <p className="side-featured-movie-text" id="overviewText">{this.state.overview}</p>
           </div>
           <div className="buttons">
-            <a href="/fullmovie" id="fullMovieButton">
+            <a href={this.state.href} id="fullMovieButton">
               <button
                 type="button"
                 className="button button-play"

@@ -1,5 +1,5 @@
 import React from "react";
-import RemoveMovieID from "../datafun/RemoveMovieID";
+import RemoveMovieDetails from "../datafun/RemoveMovieDetails";
 
 export default class MyListDetails extends React.Component {
   constructor() {
@@ -8,21 +8,30 @@ export default class MyListDetails extends React.Component {
       movieID: null, 
       movieName: null,
       movieDataAvailable: false,
+      href: null
     };
+
+    this.movieDataFalseStateSetter = this.movieDataFalseStateSetter.bind(this);
+    this.callMultipleFunctions = this.callMultipleFunctions.bind(this);
+  }
+
+  movieDataFalseStateSetter() {
+    this.setState({ movieDataAvailable: false});
+  }
+
+  callMultipleFunctions(){
+    RemoveMovieDetails();
+    this.movieDataFalseStateSetter();
   }
   
   componentDidMount() {
     var movieID = localStorage.getItem("movieIDs");
     var movieName = localStorage.getItem("movieNames");
 
-    if(localStorage.getItem("movieIDs" != null))
+    if(localStorage.getItem("movieIDs") != null)
     {
-      this.setState({ movieDataAvailable: true, movieID: movieID, movieName: movieName});
-      document.getElementById("movieName").href = "/fullmovie?movieid=" + movieID + " ";
-    } else {
-      this.setState({ movieDataAvailable: false});
+      this.setState({ movieDataAvailable: true, movieID: movieID, movieName: movieName, href: "/fullmovie?movieid=" + movieID});
     }
-
   }
 
   render() {
@@ -32,13 +41,13 @@ export default class MyListDetails extends React.Component {
       <div className="MyListContent"  >
           <button
         id="myListButton2"
-        onClick={RemoveMovieID}
+        onClick={this.callMultipleFunctions}
         type="button"
         className="button button-list"
       > 
       - Empty My List
       </button>
-      <p>- Movie Name : <a className="navbar-item" id="movieName" >{this.state.movieName}</a> </p>
+      <p>- Movie Name : <a className="navbar-item" id="movieName" href={this.state.href} >{this.state.movieName}</a> </p>
       <p>Press on the movie name to get redirected to its details page.</p>
       </div>
       )}

@@ -29,6 +29,7 @@ export default class Slider extends React.Component {
       "https://api.themoviedb.org/3/trending/movie/day?api_key=b0d1306fad90411efb79cc7bced5c6f2";
     const response = await fetch(url);
     const json = await response.json();
+
     const data = json.results.slice(1).map((result) => {
       return {
         image: "https://image.tmdb.org/t/p/original" + result.backdrop_path,
@@ -38,7 +39,6 @@ export default class Slider extends React.Component {
     });
     data.length = 9;
     this.setState({ data: data });
-    console.log(this.state.data);
 
     json.results.forEach(function (value, index) {
       var selector = "img" + index;
@@ -47,7 +47,8 @@ export default class Slider extends React.Component {
         element.src =
           "https://image.tmdb.org/t/p/original" + value.backdrop_path;
         var hrefselector = "slider-img-" + index;
-        document.getElementById(hrefselector).href = "/fullmovie?movieid=" + value.id;
+        document.getElementById(hrefselector).href =
+          "/fullmovie?movieid=" + value.id;
         document.getElementById(selector).style.height = "30%";
         document.getElementById(selector).style.width = "100%";
       }
@@ -64,47 +65,47 @@ export default class Slider extends React.Component {
           dotListClass="custom-dot-list-style"
           itemClass="carousel-item-padding-40-px"
         >
-          <div className="SlideCenter" >
+          <div className="SlideCenter">
             <a href="#" id="slider-img-1">
               <img id="img1"></img>
             </a>
           </div>
-          <div className="SlideCenter" >
+          <div className="SlideCenter">
             <a href="#" id="slider-img-2">
               <img id="img2"></img>
             </a>
           </div>
-          <div className="SlideCenter" >
+          <div className="SlideCenter">
             <a href="#" id="slider-img-3">
               <img id="img3"></img>
             </a>
           </div>
-          <div  className="SlideCenter" >
+          <div className="SlideCenter">
             <a href="#" id="slider-img-4">
               <img id="img4"></img>
             </a>
           </div>
-          <div  className="SlideCenter" >
+          <div className="SlideCenter">
             <a href="#" id="slider-img-5">
               <img id="img5"></img>
             </a>
           </div>
-          <div  className="SlideCenter" >
+          <div className="SlideCenter">
             <a href="#" id="slider-img-6">
               <img id="img6"></img>
             </a>
           </div>
-          <div  className="SlideCenter" >
+          <div className="SlideCenter">
             <a href="#" id="slider-img-7">
               <img id="img7"></img>
             </a>
           </div>
-          <div  className="SlideCenter" >
+          <div className="SlideCenter">
             <a href="#" id="slider-img-8">
               <img id="img8"></img>
             </a>
           </div>
-          <div  className="SlideCenter" >
+          <div className="SlideCenter">
             <a href="#" id="slider-img-9">
               <img id="img9"></img>
             </a>

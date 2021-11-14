@@ -1,6 +1,6 @@
 import React from "react";
-import SaveFullMovieID from "../datafun/SaveFullMovieID";
-import RemoveMovieID from "../datafun/RemoveMovieID";
+import SaveMovieDetails from "../datafun/SaveMovieDetails";
+import RemoveMovieDetails from "../datafun/RemoveMovieDetails";
 
 export default class Slider extends React.Component {
   constructor() {
@@ -27,7 +27,7 @@ export default class Slider extends React.Component {
 
   callSaveFunctions() {
     this.handleSave();
-    SaveFullMovieID();
+    SaveMovieDetails();
   }
 
   handleRemove(event) {
@@ -36,7 +36,7 @@ export default class Slider extends React.Component {
 
   callRemoveFunctions() {
     this.handleRemove();
-    RemoveMovieID();
+    RemoveMovieDetails();
   }
 
   async componentDidMount() {
@@ -45,15 +45,14 @@ export default class Slider extends React.Component {
     var movieID = params.get("movieid");
 
     var data = {};
-    var url =
-      "https://api.themoviedb.org/3/trending/movie/day?api_key=b0d1306fad90411efb79cc7bced5c6f2";
+    var url;
+    
     if (typeof movieID == "undefined") {
       url =
         "https://api.themoviedb.org/3/trending/movie/day?api_key=b0d1306fad90411efb79cc7bced5c6f2";
       const response = await fetch(url);
       const json = await response.json();
       data = json.results[0];
-      console.log(data);
     } else {
       url =
         "https://api.themoviedb.org/3/movie/" +
@@ -62,7 +61,6 @@ export default class Slider extends React.Component {
       const response = await fetch(url);
       const json = await response.json();
       data = json;
-      console.log(json);
     }
 
     document.body.style.backgroundImage =
