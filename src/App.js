@@ -17,9 +17,9 @@ function App() {
       <Navbar />
       <div className="content" >
         <Routes>
-          <Route path="/" element={<HomePage />} />
-          <Route path="/fullmovie" element={<FullMovieDetailsPage />} />
-          <Route path="/mylist" element={<MyListDetailsPage />} />
+          <Route path="/netflix-clone-react/" element={<HomePage />} />
+          <Route path="/netflix-clone-react/fullmovie" element={<FullMovieDetailsPage />} />
+          <Route path="/netflix-clone-react/mylist" element={<MyListDetailsPage />} />
         </Routes>
       </div>
     </Router>

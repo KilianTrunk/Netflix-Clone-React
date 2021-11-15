@@ -34,7 +34,7 @@ export default class Slider extends React.Component {
       return {
         image: "https://image.tmdb.org/t/p/original" + result.backdrop_path,
         caption: result.title,
-        href: "/fullmovie?movieid=" + result.id,
+        href: "/netflix-clone-react/fullmovie?movieid=" + result.id,
       };
     });
     data.length = 9;
@@ -48,7 +48,7 @@ export default class Slider extends React.Component {
           "https://image.tmdb.org/t/p/original" + value.backdrop_path;
         var hrefselector = "slider-img-" + index;
         document.getElementById(hrefselector).href =
-          "/fullmovie?movieid=" + value.id;
+          "/netflix-clone-react/fullmovie?movieid=" + value.id;
         document.getElementById(selector).style.height = "30%";
         document.getElementById(selector).style.width = "100%";
       }

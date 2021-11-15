@@ -45,7 +45,7 @@ export default class FeaturedItems extends React.Component {
 
     document.getElementById("root").style.backgroundImage = "url('https://image.tmdb.org/t/p/original/" + json.results[0].backdrop_path + "')";
 
-    this.setState({ overview: json.results[0].overview, title: json.results[0].title, href: "/fullmovie?movieid=" + json.results[0].id});
+    this.setState({ overview: json.results[0].overview, title: json.results[0].title, href: "/netflix-clone-react/fullmovie?movieid=" + json.results[0].id});
   }
 
   render() {
