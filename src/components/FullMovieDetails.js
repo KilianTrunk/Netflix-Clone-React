@@ -1,6 +1,6 @@
 import React from "react";
-import SaveMovieDetails from "../datafun/SaveMovieDetails";
-import RemoveMovieDetails from "../datafun/RemoveMovieDetails";
+import SaveMovieDetails from "../utils/SaveMovieDetails";
+import RemoveMovieDetails from "../utils/RemoveMovieDetails";
 
 export default class Slider extends React.Component {
   constructor() {
@@ -11,7 +11,7 @@ export default class Slider extends React.Component {
       movieReleaseDate: null,
       movieLanguage: null,
       showSaveButton: true,
-      showRemoveButton: false,
+      showRemoveButton: false
     };
 
     this.handleSave = this.handleSave.bind(this);
@@ -46,7 +46,7 @@ export default class Slider extends React.Component {
 
     var data = {};
     var url;
-    
+
     if (typeof movieID == "undefined") {
       url =
         "https://api.themoviedb.org/3/trending/movie/day?api_key=b0d1306fad90411efb79cc7bced5c6f2";
@@ -75,7 +75,7 @@ export default class Slider extends React.Component {
       movieTitle: movieTitle,
       movieReleaseDate: movieReleaseDate,
       movieLanguage: movieLanguage,
-      movieOverview: movieOverview,
+      movieOverview: movieOverview
     });
   }
 

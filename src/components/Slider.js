@@ -5,23 +5,23 @@ import "react-multi-carousel/lib/styles.css";
 const responsive = {
   desktop: {
     breakpoint: { max: 3000, min: 1024 },
-    items: 1,
+    items: 1
   },
   tablet: {
     breakpoint: { max: 1024, min: 464 },
-    items: 1,
+    items: 1
   },
   mobile: {
     breakpoint: { max: 464, min: 0 },
-    items: 1,
-  },
+    items: 1
+  }
 };
 
 const data = {};
 
 export default class Slider extends React.Component {
   state = {
-    data: data,
+    data: data
   };
 
   async componentDidMount() {
@@ -34,7 +34,7 @@ export default class Slider extends React.Component {
       return {
         image: "https://image.tmdb.org/t/p/original" + result.backdrop_path,
         caption: result.title,
-        href: "/netflix-clone-react/fullmovie?movieid=" + result.id,
+        href: "/fullmovie?movieid=" + result.id
       };
     });
     data.length = 9;
@@ -48,7 +48,7 @@ export default class Slider extends React.Component {
           "https://image.tmdb.org/t/p/original" + value.backdrop_path;
         var hrefselector = "slider-img-" + index;
         document.getElementById(hrefselector).href =
-          "/netflix-clone-react/fullmovie?movieid=" + value.id;
+          "/fullmovie?movieid=" + value.id;
         document.getElementById(selector).style.height = "30%";
         document.getElementById(selector).style.width = "100%";
       }

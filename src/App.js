@@ -1,25 +1,21 @@
-import "./App.css";
+import "./css/App.css";
 import * as React from "react";
-import HomePage from "../src/HomePage";
 import Navbar from "./components/Navbar";
-import FullMovieDetailsPage from "./FullMovieDetailsPage";
-import MyListDetailsPage from "./MyListDetailsPage";
+import HomePage from "../src/pages/HomePage";
+import FullMovieDetailsPage from "../src/pages/FullMovieDetailsPage";
+import MyListDetailsPage from "../src/pages/MyListDetailsPage";
 
-import {
-  BrowserRouter as Router,
-  Routes,
-  Route,
-} from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 function App() {
   return (
     <Router>
       <Navbar />
-      <div className="content" >
+      <div className="content">
         <Routes>
-          <Route path="/netflix-clone-react/" element={<HomePage />} />
-          <Route path="/netflix-clone-react/fullmovie" element={<FullMovieDetailsPage />} />
-          <Route path="/netflix-clone-react/mylist" element={<MyListDetailsPage />} />
+          <Route path="/" element={<HomePage />} />
+          <Route path="/fullmovie" element={<FullMovieDetailsPage />} />
+          <Route path="/mylist" element={<MyListDetailsPage />} />
         </Routes>
       </div>
     </Router>

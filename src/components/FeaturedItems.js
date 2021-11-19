@@ -1,6 +1,6 @@
 import * as React from "react";
-import SaveMovieDetails from "../datafun/SaveMovieDetails";
-import RemoveMovieDetails from "../datafun/RemoveMovieDetails";
+import SaveMovieDetails from "../utils/SaveMovieDetails";
+import RemoveMovieDetails from "../utils/RemoveMovieDetails";
 
 export default class FeaturedItems extends React.Component {
   constructor() {
@@ -24,7 +24,7 @@ export default class FeaturedItems extends React.Component {
     this.setState({ showSaveButton: false, showRemoveButton: true });
   }
 
-  callSaveFunctions(){
+  callSaveFunctions() {
     this.handleSave();
     SaveMovieDetails();
   }
@@ -33,19 +33,27 @@ export default class FeaturedItems extends React.Component {
     this.setState({ showSaveButton: true, showRemoveButton: false });
   }
 
-  callRemoveFunctions(){
+  callRemoveFunctions() {
     this.handleRemove();
     RemoveMovieDetails();
   }
 
   async componentDidMount() {
-    const url = "https://api.themoviedb.org/3/trending/movie/day?api_key=b0d1306fad90411efb79cc7bced5c6f2";
+    const url =
+      "https://api.themoviedb.org/3/trending/movie/day?api_key=b0d1306fad90411efb79cc7bced5c6f2";
     const response = await fetch(url);
     const json = await response.json();
 
-    document.getElementById("root").style.backgroundImage = "url('https://image.tmdb.org/t/p/original/" + json.results[0].backdrop_path + "')";
+    document.getElementById("root").style.backgroundImage =
+      "url('https://image.tmdb.org/t/p/original/" +
+      json.results[0].backdrop_path +
+      "')";
 
-    this.setState({ overview: json.results[0].overview, title: json.results[0].title, href: "/netflix-clone-react/fullmovie?movieid=" + json.results[0].id});
+    this.setState({
+      overview: json.results[0].overview,
+      title: json.results[0].title,
+      href: "/fullmovie?movieid=" + json.results[0].id
+    });
   }
 
   render() {
@@ -60,10 +68,14 @@ export default class FeaturedItems extends React.Component {
             />
           </div>
           <div className="main-featured-movie-text-div">
-            <p className="main-featured-movie-text" id="originalTitle">{this.state.title}</p>
+            <p className="main-featured-movie-text" id="originalTitle">
+              {this.state.title}
+            </p>
           </div>
           <div className="side-featured-movie-text-div">
-            <p className="side-featured-movie-text" id="overviewText">{this.state.overview}</p>
+            <p className="side-featured-movie-text" id="overviewText">
+              {this.state.overview}
+            </p>
           </div>
           <div className="buttons">
             <a href={this.state.href} id="fullMovieButton">
@@ -76,13 +88,13 @@ export default class FeaturedItems extends React.Component {
               </button>
             </a>
             {this.state.showSaveButton && (
-            <button
-              onClick={this.callSaveFunctions}
-              type="button"
-              className="button button-list"
-            >
-              + My List
-            </button>
+              <button
+                onClick={this.callSaveFunctions}
+                type="button"
+                className="button button-list"
+              >
+                + My List
+              </button>
             )}
             {this.state.showRemoveButton && (
               <button
