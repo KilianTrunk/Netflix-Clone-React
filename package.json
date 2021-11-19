@@ -1,7 +1,8 @@
 {
-  "name": "netflix-clone",
+  "name": "kiliantrunk",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://csb-1h906.netlify.app/",
   "dependencies": {
     "@splidejs/react-splide": "^0.6.7",
     "@testing-library/jest-dom": "^5.15.0",
@@ -39,5 +40,7 @@
   },
   "devDependencies": {
     "gh-pages": "^3.2.3"
-  }
+  },
+  "keywords": [],
+  "description": ""
 }
