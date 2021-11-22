@@ -66,48 +66,48 @@ export default class Slider extends React.Component {
           itemClass="carousel-item-padding-40-px"
         >
           <div className="SlideCenter">
-            <a href="#" id="slider-img-1">
-              <img id="img1"></img>
+            <a href="TBA" id="slider-img-1">
+              <img id="img1" alt="" ></img>
             </a>
           </div>
           <div className="SlideCenter">
-            <a href="#" id="slider-img-2">
-              <img id="img2"></img>
+            <a href="TBA" id="slider-img-2">
+              <img id="img2" alt="" ></img>
             </a>
           </div>
           <div className="SlideCenter">
-            <a href="#" id="slider-img-3">
-              <img id="img3"></img>
+            <a href="TBA" id="slider-img-3">
+              <img id="img3" alt="" ></img>
             </a>
           </div>
           <div className="SlideCenter">
-            <a href="#" id="slider-img-4">
-              <img id="img4"></img>
+            <a href="TBA" id="slider-img-4">
+              <img id="img4" alt="" ></img>
             </a>
           </div>
           <div className="SlideCenter">
-            <a href="#" id="slider-img-5">
-              <img id="img5"></img>
+            <a href="TBA" id="slider-img-5">
+              <img id="img5" alt="" ></img>
             </a>
           </div>
           <div className="SlideCenter">
-            <a href="#" id="slider-img-6">
-              <img id="img6"></img>
+            <a href="TBA" id="slider-img-6">
+              <img id="img6" alt="" ></img>
             </a>
           </div>
           <div className="SlideCenter">
-            <a href="#" id="slider-img-7">
-              <img id="img7"></img>
+            <a href="TBA" id="slider-img-7">
+              <img id="img7" alt="" ></img>
             </a>
           </div>
           <div className="SlideCenter">
-            <a href="#" id="slider-img-8">
-              <img id="img8"></img>
+            <a href="TBA" id="slider-img-8">
+              <img id="img8" alt="" ></img>
             </a>
           </div>
           <div className="SlideCenter">
-            <a href="#" id="slider-img-9">
-              <img id="img9"></img>
+            <a href="TBA" id="slider-img-9">
+              <img id="img9" alt="" ></img>
             </a>
           </div>
         </Carousel>
