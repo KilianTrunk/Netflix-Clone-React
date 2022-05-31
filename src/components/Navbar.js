@@ -1,33 +1,40 @@
 import * as React from "react";
 import netflixLogo from "../images/netflix-logo.png";
 
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Link
+} from "react-router-dom";
+
 const Navbar = () => (
   <div className="navigation-bar">
     <div className="flex-container centerclass navbar-logo">
-      <a href="/">
+      <Link to="/">
         <img src={netflixLogo} alt="netflix-logo" className="navbar-logo" />
-      </a>
+      </Link>
     </div>
     <div className="menus">
       <div className="flex-container centerclass">
-        <a href="/" className="navbar-item">
+        <Link to="/">
           TV Shows
-        </a>
+        </Link>
       </div>
       <div className="flex-container centerclass">
-        <a href="/" className="navbar-item">
+        <Link to="/">
           Movies
-        </a>
+        </Link>
       </div>
       <div className="flex-container centerclass">
-        <a href="/" className="navbar-item">
+       <Link to="/">
           Recently Added
-        </a>
+       </Link>
       </div>
       <div className="flex-container centerclass">
-        <a href="/mylist" className="navbar-item">
+        <Link to="/mylist">
           My List
-        </a>
+        </Link>
       </div>
     </div>
     <div className="flex-container centerclass">
