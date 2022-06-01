@@ -1,6 +1,7 @@
 import React from "react";
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
+import { useState, useEffect } from "react";
 
 const responsive = {
   desktop: {
@@ -17,45 +18,40 @@ const responsive = {
   }
 };
 
-const data = {};
+export default function Slider() {
 
-export default class Slider extends React.Component {
-  state = {
-    data: data
-  };
+  const [data, setData] = useState("");
 
-  async componentDidMount() {
-    const url =
-      "https://api.themoviedb.org/3/trending/movie/day?api_key=b0d1306fad90411efb79cc7bced5c6f2";
-    const response = await fetch(url);
-    const json = await response.json();
-
-    const data = json.results.slice(1).map((result) => {
-      return {
-        image: "https://image.tmdb.org/t/p/original" + result.backdrop_path,
-        caption: result.title,
-        href: "/fullmovie?movieid=" + result.id
-      };
-    });
-    data.length = 9;
-    this.setState({ data: data });
-
-    json.results.forEach(function (value, index) {
-      var selector = "img" + index;
-      var element = document.getElementById(selector);
-      if (element) {
-        element.src =
-          "https://image.tmdb.org/t/p/original" + value.backdrop_path;
-        var hrefselector = "slider-img-" + index;
-        document.getElementById(hrefselector).href =
-          "/fullmovie?movieid=" + value.id;
-        document.getElementById(selector).style.height = "30%";
-        document.getElementById(selector).style.width = "100%";
+  useEffect(() => {
+    fetch('https://api.themoviedb.org/3/trending/movie/day?api_key=b0d1306fad90411efb79cc7bced5c6f2')
+      .then(results => results.json())
+      .then(data => {
+        const movie = data.results;
+        console.log(movie);
+        data = movie.slice(1).map((movie) => {
+          return {
+            image: "https://image.tmdb.org/t/p/original" + movie.backdrop_path,
+            caption: movie.title,
+            href: "/fullmovie?movieid=" + movie.id
+          };
+        });
+        data.length = 9;
+        movie.forEach(function (value, index) {
+        var selector = "img" + index;
+        var element = document.getElementById(selector);
+        if (element) {
+          element.src =
+            "https://image.tmdb.org/t/p/original" + value.backdrop_path;
+          var hrefselector = "slider-img-" + index;
+          document.getElementById(hrefselector).href =
+            "/fullmovie?movieid=" + value.id;
+          document.getElementById(selector).style.height = "30%";
+          document.getElementById(selector).style.width = "100%";
       }
-    });
-  }
+    })
+      });
+  }, []);
 
-  render() {
     return (
       <div className="slider">
         <Carousel
@@ -113,5 +109,4 @@ export default class Slider extends React.Component {
         </Carousel>
       </div>
     );
-  }
 }

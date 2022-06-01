@@ -2,12 +2,10 @@ import "../css/App.css";
 import * as React from "react";
 import MyListDetails from "../components/MyListDetails";
 
-function MyListDetailsPage() {
+export default function MyListDetailsPage() {
   return (
     <>
       <MyListDetails />
     </>
   );
 }
-
-export default MyListDetailsPage;

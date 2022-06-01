@@ -7,7 +7,7 @@ import MyListDetailsPage from "../src/pages/MyListDetailsPage";
 
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
-function App() {
+export default function App() {
   return (
     <Router>
       <Navbar />
@@ -21,5 +21,3 @@ function App() {
     </Router>
   );
 }
-
-export default App;

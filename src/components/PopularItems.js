@@ -1,7 +1,6 @@
 import React from "react";
 
-export default class PopularItems extends React.Component {
-  render() {
+export default function PopularItems() {
     return (
       <div className="popular-items">
         <div className="popular-text-div">
@@ -9,5 +8,4 @@ export default class PopularItems extends React.Component {
         </div>
       </div>
     );
-  }
 }

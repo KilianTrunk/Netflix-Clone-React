@@ -2,12 +2,10 @@ import "../css/App.css";
 import * as React from "react";
 import FullMovieDetails from "../components/FullMovieDetails";
 
-function FullMovieDetailsPage() {
+export default function FullMovieDetailsPage() {
   return (
     <>
       <FullMovieDetails />
     </>
   );
 }
-
-export default FullMovieDetailsPage;

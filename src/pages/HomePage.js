@@ -4,7 +4,7 @@ import FeaturedItems from "../components/FeaturedItems";
 import PopularItems from "../components/PopularItems";
 import Slider from "../components/Slider";
 
-function HomePage() {
+export default function HomePage() {
   return (
     <>
       <FeaturedItems />
@@ -13,5 +13,3 @@ function HomePage() {
     </>
   );
 }
-
-export default HomePage;

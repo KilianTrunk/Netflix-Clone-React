@@ -1,113 +1,75 @@
-import React from "react";
+import * as React from "react";
 import SaveMovieDetails from "../utils/SaveMovieDetails";
 import RemoveMovieDetails from "../utils/RemoveMovieDetails";
+import { useState, useEffect } from "react";
 
-export default class Slider extends React.Component {
-  constructor() {
-    super();
-    this.state = {
-      movieTitle: null,
-      movieOverview: null,
-      movieReleaseDate: null,
-      movieLanguage: null,
-      showSaveButton: true,
-      showRemoveButton: false
-    };
 
-    this.handleSave = this.handleSave.bind(this);
-    this.callSaveFunctions = this.callSaveFunctions.bind(this);
+export default function Slider() {
 
-    this.handleRemove = this.handleRemove.bind(this);
-    this.callRemoveFunctions = this.callRemoveFunctions.bind(this);
-  }
+  const [saveButton, setSaveButton] = useState(true);
+  const [removeButton, setRemoveButton] = useState(false); 
+  const [title, setTitle] = useState("");
+  const [overview, setOverview] = useState("");
+  const [releaseDate, setReleaseDate] = useState("");
+  const [language, setLanguage] = useState("");
 
-  handleSave(event) {
-    this.setState({ showSaveButton: false, showRemoveButton: true });
-  }
-
-  callSaveFunctions() {
-    this.handleSave();
+  function handleSave() {
+    setSaveButton(false);
+    setRemoveButton(true);
     SaveMovieDetails();
   }
-
-  handleRemove(event) {
-    this.setState({ showSaveButton: true, showRemoveButton: false });
-  }
-
-  callRemoveFunctions() {
-    this.handleRemove();
+  
+  function handleRemove() {
+    setSaveButton(true);
+    setRemoveButton(false);
     RemoveMovieDetails();
   }
 
-  async componentDidMount() {
-    var currentPageUrl = new URL(window.location.href);
-    let params = currentPageUrl.searchParams;
-    var movieID = params.get("movieid");
+  const currentPageUrl = new URL(window.location.href);
+  const params = currentPageUrl.searchParams;
+  const movieID = params.get("movieid");
 
-    var data = {};
-    var url;
+  useEffect(() => {
+    fetch("https://api.themoviedb.org/3/movie/" + movieID + "?api_key=b0d1306fad90411efb79cc7bced5c6f2")
+      .then(results => results.json())
+      .then(data => {
+        const movie = data;
+        setOverview(movie.overview);
+        setTitle(movie.title);
+        setReleaseDate(movie.release_date);
+        setLanguage(movie.language);
+        document.getElementById("root").style.backgroundImage = "url('https://image.tmdb.org/t/p/original/" + movie.backdrop_path + "')";
+      });
+  }, []);
 
-    if (typeof movieID == "undefined") {
-      url =
-        "https://api.themoviedb.org/3/trending/movie/day?api_key=b0d1306fad90411efb79cc7bced5c6f2";
-      const response = await fetch(url);
-      const json = await response.json();
-      data = json.results[0];
-    } else {
-      url =
-        "https://api.themoviedb.org/3/movie/" +
-        movieID +
-        "?api_key=b0d1306fad90411efb79cc7bced5c6f2";
-      const response = await fetch(url);
-      const json = await response.json();
-      data = json;
-    }
-
-    document.body.style.backgroundImage =
-      "url('https://image.tmdb.org/t/p/original/" + data.backdrop_path + "')";
-
-    var movieTitle = data.original_title;
-    var movieOverview = data.overview;
-    var movieReleaseDate = data.release_date;
-    var movieLanguage = data.original_language;
-
-    this.setState({
-      movieTitle: movieTitle,
-      movieReleaseDate: movieReleaseDate,
-      movieLanguage: movieLanguage,
-      movieOverview: movieOverview
-    });
-  }
-
-  render() {
     return (
       <>
         <div className="movieDetailsTextStyle">
           <p>
-            Movie Title: <br /> {this.state.movieTitle}
+            Movie Title: <br /> {title}
           </p>
           <p>
-            Movie Overview: <br /> {this.state.movieOverview}
+            Movie Overview: <br /> {overview}
           </p>
           <p>
-            Movie Release Date: <br /> {this.state.movieReleaseDate}
+            Movie Release Date: <br /> {releaseDate}
           </p>
           <p>
-            Movie Language: <br /> {this.state.movieLanguage}
+            Movie Language: <br /> {language}
           </p>
         </div>
-        {this.state.showSaveButton && (
+        {saveButton && (
           <button
-            onClick={this.callSaveFunctions}
+            onClick={() => handleSave()}
             type="button"
             className="button button-list"
           >
             + My List
           </button>
         )}
-        {this.state.showRemoveButton && (
+        {removeButton && (
           <button
-            onClick={this.callRemoveFunctions}
+            onClick={() => handleRemove()}
             type="button"
             className="button button-list"
           >
@@ -116,5 +78,4 @@ export default class Slider extends React.Component {
         )}
       </>
     );
-  }
 }

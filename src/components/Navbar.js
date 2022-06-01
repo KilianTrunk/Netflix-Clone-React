@@ -1,14 +1,10 @@
 import * as React from "react";
 import netflixLogo from "../images/netflix-logo.png";
 
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
-  Link
-} from "react-router-dom";
+import { Link } from "react-router-dom";
 
-const Navbar = () => (
+export default function Navbar() {
+  return(
   <div className="navigation-bar">
     <div className="flex-container centerclass navbar-logo">
       <Link to="/">
@@ -17,22 +13,22 @@ const Navbar = () => (
     </div>
     <div className="menus">
       <div className="flex-container centerclass">
-        <Link to="/">
+        <Link to="/" className="navbar-item">
           TV Shows
         </Link>
       </div>
       <div className="flex-container centerclass">
-        <Link to="/">
+        <Link to="/" className="navbar-item">
           Movies
         </Link>
       </div>
       <div className="flex-container centerclass">
-       <Link to="/">
+       <Link to="/" className="navbar-item">
           Recently Added
        </Link>
       </div>
       <div className="flex-container centerclass">
-        <Link to="/mylist">
+        <Link to="/mylist" className="navbar-item">
           My List
         </Link>
       </div>
@@ -44,5 +40,4 @@ const Navbar = () => (
     </div>
   </div>
 );
-
-export default Navbar;
+}
