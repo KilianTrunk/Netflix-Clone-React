@@ -1,7 +1,7 @@
 # netflix-clone-react
-## Author : Kilian Trunk
+## Author : [Kilian Trunk](https://github.com/facebook/create-react-app).
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This project was bootstrapped with [Create React App](https://www.linkedin.com/in/kilian-trunk-8b9563278/).
 
 ## Available Scripts
 
